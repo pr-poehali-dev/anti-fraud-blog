@@ -180,10 +180,7 @@ export default function Index() {
               <a href="#blog" className="text-gray-700 hover:text-red-600 transition-colors">Блог</a>
               <a href="#report" className="text-gray-700 hover:text-red-600 transition-colors">Сообщить</a>
             </nav>
-            <Button className="bg-red-600 hover:bg-red-700">
-              <Icon name="Phone" size={16} className="mr-2" />
-              Горячая линия
-            </Button>
+            <Button className="bg-red-600 hover:bg-red-700">Наш Telegram rканал</Button>
           </div>
         </div>
       </header>
