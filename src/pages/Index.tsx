@@ -86,6 +86,56 @@ export default function Index() {
     }
   ];
 
+  const blogPosts = [
+    {
+      id: 1,
+      title: "Новые схемы мошенничества в 2025 году: как не стать жертвой",
+      excerpt: "Мошенники постоянно совершенствуют свои методы. Рассказываем о самых актуальных угрозах...",
+      category: "Аналитика",
+      author: "Эксперт по кибербезопасности",
+      date: "20.07.2025",
+      readTime: "5 мин",
+      image: "/img/68c87f96-f78c-442d-adb4-9dcb7ef70d42.jpg",
+      tags: ["кибербезопасность", "мошенничество", "защита"]
+    },
+    {
+      id: 2,
+      title: "Как работают call-центры мошенников: взгляд изнутри",
+      excerpt: "Бывший сотрудник мошеннического call-центра рассказал о методах работы преступников...",
+      category: "Расследование",
+      author: "Журналист-расследователь",
+      date: "18.07.2025",
+      readTime: "8 мин",
+      image: "/img/68c87f96-f78c-442d-adb4-9dcb7ef70d42.jpg",
+      tags: ["call-центр", "схемы", "расследование"]
+    },
+    {
+      id: 3,
+      title: "Правовая защита: что делать, если вас обманули",
+      excerpt: "Пошаговая инструкция действий при мошенничестве и куда обращаться за помощью...",
+      category: "Юридическая помощь",
+      author: "Юрист",
+      date: "17.07.2025",
+      readTime: "6 мин",
+      image: "/img/68c87f96-f78c-442d-adb4-9dcb7ef70d42.jpg",
+      tags: ["право", "защита", "инструкция"]
+    },
+    {
+      id: 4,
+      title: "Психология жертв мошенничества: почему люди ведутся на обман",
+      excerpt: "Разбираем психологические механизмы, которые используют мошенники для воздействия...",
+      category: "Психология",
+      author: "Психолог",
+      date: "15.07.2025",
+      readTime: "7 мин",
+      image: "/img/68c87f96-f78c-442d-adb4-9dcb7ef70d42.jpg",
+      tags: ["психология", "манипуляции", "осознанность"]
+    }
+  ];
+
+  const blogCategories = ["Все", "Аналитика", "Расследование", "Юридическая помощь", "Психология", "Инструкции"];
+  const [selectedCategory, setSelectedCategory] = useState("Все");
+
   const handleComplaintSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Жалоба отправлена:", complaintForm);
@@ -127,6 +177,7 @@ export default function Index() {
               <a href="#alerts" className="text-gray-700 hover:text-red-600 transition-colors">Предупреждения</a>
               <a href="#database" className="text-gray-700 hover:text-red-600 transition-colors">База данных</a>
               <a href="#schemes" className="text-gray-700 hover:text-red-600 transition-colors">Схемы</a>
+              <a href="#blog" className="text-gray-700 hover:text-red-600 transition-colors">Блог</a>
               <a href="#report" className="text-gray-700 hover:text-red-600 transition-colors">Сообщить</a>
             </nav>
             <Button className="bg-red-600 hover:bg-red-700">
@@ -294,6 +345,93 @@ export default function Index() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section id="blog" className="py-16 px-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">Блог о мошенничестве</h3>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Экспертные статьи, расследования и практические советы по защите от мошенников
+            </p>
+          </div>
+
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {blogCategories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedCategory(category)}
+                className={selectedCategory === category ? "bg-red-600 hover:bg-red-700" : ""}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+
+          {/* Blog Posts Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            {blogPosts
+              .filter(post => selectedCategory === "Все" || post.category === selectedCategory)
+              .map((post) => (
+                <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer">
+                  <div className="aspect-video bg-gray-200 rounded-t-lg overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge variant="outline" className="text-red-600 border-red-600">
+                        {post.category}
+                      </Badge>
+                      <span className="text-sm text-gray-500">{post.readTime}</span>
+                    </div>
+                    <CardTitle className="text-xl leading-tight hover:text-red-600 transition-colors">
+                      {post.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.map((tag, index) => (
+                        <span 
+                          key={index}
+                          className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                      <span>{post.author}</span>
+                      <span>{post.date}</span>
+                    </div>
+                    
+                    <Button variant="link" className="p-0 text-red-600 font-medium">
+                      Читать полностью 
+                      <Icon name="ArrowRight" size={16} className="ml-1" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+          </div>
+
+          {/* Load More Button */}
+          <div className="text-center mt-12">
+            <Button className="bg-red-600 hover:bg-red-700">
+              <Icon name="Plus" size={16} className="mr-2" />
+              Загрузить ещё статьи
+            </Button>
           </div>
         </div>
       </section>
