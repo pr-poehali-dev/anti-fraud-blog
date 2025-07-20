@@ -164,9 +164,9 @@ export default function Index() {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
               <img 
-                src="/img/68c87f96-f78c-442d-adb4-9dcb7ef70d42.jpg" 
-                alt="Защита от мошенников" 
-                className="w-10 h-10 rounded-lg"
+                src="https://cdn.poehali.dev/files/a1e3aa3e-16d7-4338-bb66-6db647ec0883.png" 
+                alt="Народный фронт Антимошенник" 
+                className="w-12 h-12"
               />
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">Антимошенник</h1>
