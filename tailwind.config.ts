@@ -61,7 +61,11 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				danger: '#DC2626',
+				warning: '#F59E0B',
+				'dark-gray': '#1F2937',
+				success: '#10B981'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
