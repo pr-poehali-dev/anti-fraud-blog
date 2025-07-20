@@ -528,10 +528,7 @@ export default function Index() {
             <div>
               <h4 className="text-lg font-semibold mb-4">Контакты</h4>
               <ul className="space-y-2 text-gray-400">
-                <li className="flex items-center gap-2">
-                  <Icon name="Phone" size={16} />
-                  8-800-123-45-67
-                </li>
+                <li className="flex items-center gap-2"></li>
                 <li className="flex items-center gap-2">
                   <Icon name="Mail" size={16} />
                   help@antimoshennik.ru
